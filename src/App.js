@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import { Button } from "reactstrap"
+import Login from "./views/auth/Login"
+import Dashboard from "./components/dashboard/Dashboard"
+import React, { Component } from "react"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import Chart from "./components/chart/Chart"
+import SideBar from './components/sidebar/SideBar';
+import TableUsers from './components/table/TableUsers';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loggedInStatus: "NOT_LOGGED_IN",
+      admin: {}
+    }
+  }
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <switch>
+            <Route exact path={"/"} component={Login} />
+            <Route exact path={"/dashboard"} component={Dashboard}/>
+            <Route exact path={"/sidebar"} component={SideBar}/>
+            <Route exact path={"/analytics"} component={Chart}/>
+            <Route exact path={"/table"} component={TableUsers}/>
+          </switch>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

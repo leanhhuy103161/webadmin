@@ -1,0 +1,27 @@
+.Login-background{
+    background-image: url("background-login.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+      
+}
+
+.Login-form{
+    width: 350px;
+    height: 400px;
+    background: rgb(255, 255, 255);
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+.LoginNavBar{
+    width: 100%;
+    white-space: nowrap;
+}
