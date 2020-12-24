@@ -6,25 +6,47 @@ import {Container, Row, Col, CardImg, CardSubtitle, CardText, Button, Card,
 import Paging from "./Pagination/Pagination"
 import SideBar from "../sidebar/SideBar"
 import "./Dashboard.css"
+import { Redirect } from "react-router-dom"
 export default class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            posts: [],
             users: []
         }
+        
     }
 
+    handleClick(postID, e) {
+        console.log("You clicked Delete Button");
+        const headers = {
+         'Authorization': localStorage.authorization
+        }
+     // console.log("Authorization: ", localStorage.authorization);
+     // console.log("post ID: ", postID);
+        axios.delete("https://leanhhuy.herokuapp.com/posts/" + postID, {headers}).then(res => {
+             console.log(res);
+         }); 
+     }
+
     componentDidMount() {
-        axios.get("https://uqtik.sse.codesandbox.io/users").then(res => {
+        const headers = {
+            'Authorization': localStorage.authorization
+        }
+        axios.get("https://leanhhuy.herokuapp.com/posts", {headers}).then(res => {
             this.setState({
-                users: res.data
+                posts: res.data.posts
             })
         });
-        console.log(this.state.users);
+        console.log(this.state.posts);
     }
 
     render() {
-        const { users } = this.state;
+        const { posts } = this.state;
+        console.log(this.state.posts);
+        if (!localStorage.authorization) {
+            return <Redirect to = '/login' />
+          }
         return (
             <div className="Dashboard">
                 <div><Topmenu /></div>
@@ -41,18 +63,16 @@ export default class Dashboard extends Component {
                                 </div>
                                 <Row>
                                 {
-                                    users.map(user => (
+                                    posts.map(post => (
                                         <Col xs="4">
                                             <Card>
                                                 <CardImg top width="100%" sizes="255"
-                                                    src={user.imageUrl}
+                                                    src={`data:image/jpeg;base64,${post.image}`}
                                                     alt="Card image cap" />
                                                 <CardBody>
-                                                    <CardTitle tag="h5">{user.first_name} {user.last_name}</CardTitle>
-                                                    <CardText>Some quick example text to 
-                                                        build on the card title and make up 
-                                                        the bulk of the card's content.</CardText>
-                                                    <Button>Remove</Button>
+                                                    <CardTitle tag="h5">{post.owner.firstName} {post.owner.lastName}</CardTitle>
+                                                    <CardText>{post.description}</CardText>
+                                                    <Button onClick={this.handleClick.bind(this, post._id)}>Remove</Button>
                                                 </CardBody>
                                             </Card>
                                         </Col>

@@ -12,17 +12,25 @@ import {
   DropdownMenu,
   DropdownItem,
   Form,
+  Media 
 } from 'reactstrap';
-
+import { Redirect } from "react-router-dom"
 import {faInfo, faBell, faSortDown} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./Topmenu.css"
+
 
 const Topmenu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
+
+  const logout = () => {
+      console.log("calling log out");
+      window.localStorage.clear();
+   }
+  
   return (
     <div className="Topmenu">
       <Navbar color="dark" dark expand="md">
@@ -32,7 +40,7 @@ const Topmenu = (props) => {
           <Nav className="ml-auto" navbar>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-              <FontAwesomeIcon icon={faBell}/> Notifcation
+                <img className="avatar" src={`data:image/jpeg;base64,${localStorage.avatar}`} alt="avatar" width="30" height="30" /> {localStorage.lastName}
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
@@ -42,27 +50,12 @@ const Topmenu = (props) => {
                   Setting
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>
+                <DropdownItem href="/login" onClick={logout}>
                   Log out
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                  
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Admin Information
-                </DropdownItem>
-                <DropdownItem>
-                  Setting
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Log out
-                </DropdownItem>
-              </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
         </Collapse>

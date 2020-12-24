@@ -1,27 +1,38 @@
-.Login-background{
-    background-image: url("background-login.jpg");
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-      
-}
-
-.Login-form{
-    width: 350px;
-    height: 400px;
-    background: rgb(255, 255, 255);
-    color: black;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    box-sizing: border-box;
-    padding: 10px 30px;
-    border-radius: 10px;
-}
-
-.LoginNavBar{
-    width: 100%;
-    white-space: nowrap;
-}
+.Login {
+    text-align: left;
+    padding: 1em;
+    margin: 1em; 
+    border: 2px solid #d3d3d3;
+    border-radius: .5em;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    margin-top: 100px; 
+  }
+  
+  .form {
+    padding: 1e;
+  }
+  
+  label {
+    display: flex;
+    font-weight: 600;
+  }
+  
+  button {
+    justify-content: flex-end;
+  }
+  
+  .Login-title {
+    font-size: 1.5em;
+  }
+  
+  .Login-intro {
+    font-size: large;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }

@@ -16,22 +16,17 @@ const SideBar = (props) => {
     <div className="SideBar">
       <Nav vertical>
         <NavItem>
-          <NavLink href="#">
-            <h6><FontAwesomeIcon icon={faUserTie}/> Admin</h6>
-          </NavLink>
-        </NavItem>
-        <NavItem>
           <NavLink href="/dashboard">
             <h6><FontAwesomeIcon icon={faChalkboard}/> Dashboard</h6>
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="#">
+          <NavLink href="/table">
             <h6><FontAwesomeIcon icon={faTable}/> Table</h6>
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="#">
+          <NavLink href="analytics">
             <h6><FontAwesomeIcon icon={faChartArea}/> Analytics</h6>
           </NavLink>
         </NavItem>
