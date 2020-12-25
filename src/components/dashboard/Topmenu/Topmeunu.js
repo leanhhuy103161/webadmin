@@ -15,8 +15,6 @@ import {
   Media 
 } from 'reactstrap';
 import { Redirect } from "react-router-dom"
-import {faInfo, faBell, faSortDown} from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./Topmenu.css"
 
 
@@ -34,7 +32,7 @@ const Topmenu = (props) => {
   return (
     <div className="Topmenu">
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/Dashboard"><h6><FontAwesomeIcon icon={faInfo}/>nstagram</h6></NavbarBrand>
+        <NavbarBrand href="/Dashboard"><h6>Kilogram</h6></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>

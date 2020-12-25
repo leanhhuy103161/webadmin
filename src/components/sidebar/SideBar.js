@@ -26,7 +26,7 @@ const SideBar = (props) => {
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="analytics">
+          <NavLink href="#">
             <h6><FontAwesomeIcon icon={faChartArea}/> Analytics</h6>
           </NavLink>
         </NavItem>

@@ -11,12 +11,7 @@ import { Redirect } from "react-router-dom"
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      loggedInStatus: "NOT_LOGGED_IN",
-      admin: {}
-    }
   }
-
   render() {
     return (
       <div className="App">
@@ -25,8 +20,6 @@ class App extends Component {
             <Route exact path={"/"} component={Dashboard}/>
             <Route exact path={"/login"} component={Login} />
             <Route exact path={"/dashboard"} component={Dashboard}/>
-            <Route exact path={"/sidebar"} component={SideBar}/>
-            <Route exact path={"/analytics"} component={Chart}/>
             <Route exact path={"/table"} component={TableUsers}/>
           </switch>
         </Router>
