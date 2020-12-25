@@ -4,7 +4,7 @@ import axios from "axios"
 import { Button, Form, FormGroup, Label, Input, FormText, Col, Container, FormFeedback } from 'reactstrap';
 import "./Login.css"
 import { Redirect } from "react-router-dom"
-
+import logocuacap from '../../photos/logocuacap.png'
 import {faWeightHanging} from "@fortawesome/free-solid-svg-icons"
 
 
@@ -88,8 +88,9 @@ export default class Login extends Component {
           return <Redirect to = '/dashboard' />
         }
         return (
-          <Container className="Login">
-            <h2>Sign In</h2>
+          <Container className="Login" style={{height:"400px", width:"500px", marginTop:"10em"}}>
+            
+            <img src={logocuacap} style={{height:"100px"}}></img>
             <Form className="form" onSubmit={ (e) => this.submitForm(e) }>
               <Col>
                 <FormGroup>
@@ -129,7 +130,8 @@ export default class Login extends Component {
                 />
                 </FormGroup>
               </Col>
-              <Button className="button">Submit</Button>
+              
+              <Button className="button" style={{marginLeft:"1em",width:"27em", marginTop:"0.5em", background:"rgb(128,128,255)"}}>Submit</Button>
           </Form>
           </Container>
         );
