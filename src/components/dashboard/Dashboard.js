@@ -12,7 +12,8 @@ export default class Dashboard extends Component {
         super(props)
         this.state = {
             posts: [],
-            users: []
+            users: [],
+            touchDelete: false
         }
         
     }
@@ -22,10 +23,9 @@ export default class Dashboard extends Component {
         const headers = {
          'Authorization': localStorage.authorization
         }
-     // console.log("Authorization: ", localStorage.authorization);
-     // console.log("post ID: ", postID);
         axios.delete("https://leanhhuy.herokuapp.com/posts/" + postID, {headers}).then(res => {
              console.log(res);
+             this.setState({touchDelete:true})
          }); 
      }
 
@@ -42,11 +42,14 @@ export default class Dashboard extends Component {
     }
 
     render() {
-        const { posts } = this.state;
+        const { posts, touchDelete } = this.state;
         console.log(this.state.posts);
         if (!localStorage.authorization) {
             return <Redirect to = '/login' />
           }
+        if (touchDelete === true) {
+            return <Redirect to='/'/>
+        }
         return (
             <div className="Dashboard">
                 <div><Topmenu /></div>
