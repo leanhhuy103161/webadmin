@@ -13,7 +13,8 @@ export default class TableUsers extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            users: []
+            users: [],
+            touchDelete: false
         }
     }
 
@@ -22,10 +23,9 @@ export default class TableUsers extends Component {
        const headers = {
         'Authorization': localStorage.authorization
        }
-    // console.log("Authorization: ", localStorage.authorization);
-    // console.log("user ID: ", userID);
        axios.delete("https://leanhhuy.herokuapp.com/users/" + userID, {headers}).then(res => {
             console.log(res);
+            this.setState({touchDelelte:true})
         }); 
     }
     componentDidMount() {
@@ -38,10 +38,13 @@ export default class TableUsers extends Component {
     }
 
     render() {
-        const { users } = this.state;
+        const { users, touchDelete } = this.state;
         if (!localStorage.authorization) {
             return <Redirect to = '/login' />
           }
+        if (touchDelete === true) {
+            return <Redirect to='/table'/>
+        }
         return(
             <div>
                 <div>
@@ -75,7 +78,7 @@ export default class TableUsers extends Component {
                                                 <td>{user.firstName}</td>
                                                 <td>{user.lastName}</td>
                                                 <td>{user.email}</td>
-                                                <th scope="col"><Button onClick={this.handleClick.bind(this, user._id)}>Remove</Button></th>
+                                                <th scope="col"><Button href='/table' onClick={this.handleClick.bind(this, user._id)}>Remove</Button></th>
                                                 </tr>
                                                 ))}
                                             </tbody>
